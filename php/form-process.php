@@ -1,5 +1,5 @@
 <?php
-
+require ('smtp/PHPMailerAutoload.php');
 $errorMSG = "";
 
 // NAME
@@ -32,7 +32,6 @@ if (empty($_POST["message"])) {
 }
 
 
-$EmailTo = "armanmia7@gmail.com";
 $Subject = "New Message Received";
 
 // prepare email body text
@@ -43,18 +42,19 @@ $Body .= "\n";
 $Body .= "Email: ";
 $Body .= $email;
 $Body .= "\n";
-$Body .= "Subject: ";
-$Body .= $msg_subject;
-$Body .= "\n";
 $Body .= "Message: ";
 $Body .= $message;
 $Body .= "\n";
-
+$Bodytosend="";
+$Bodytosend.="Thank you for contacting SCA Nit Jamshedpur\n";
+$Bodytosend.=$Body;
+$Bodytosend.="\nWe will soon contact you back with an appropriate response";
 // send email
-$success = mail($EmailTo, $Subject, $Body, "From:".$email);
-
+//$success = mail($EmailTo, $Subject, $Body, "From:".$email);
+$success=sendamail("recruit.my.freelancer@gmail.com",$Subject,$Body);
+$success=sendamail($email,"Response recieved",$Bodytosend);
 // redirect to success page
-if ($success && $errorMSG == ""){
+if ($success){
    echo "success";
 }else{
     if($errorMSG == ""){
@@ -64,4 +64,41 @@ if ($success && $errorMSG == ""){
     }
 }
 
+
+function sendamail($to,$subject,$content){
+    $mail = new PHPMailer();
+    
+    try {
+        //Server settings
+        //$mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+        $mail->isSMTP();                                            //Send using SMTP
+        $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+        $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+        //$mail->SMTPDebug=3;
+        $mail->Username   = 'recruit.my.freelancer@gmail.com';                     //SMTP username
+        $mail->Password   = 'tzcodlzvdxhamyua';                               //SMTP password
+        //$mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;            //Enable implicit TLS encryption
+        $mail->SMTPSecure='tls';
+        $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+        //Recipients
+        $mail->setFrom('recruit.my.freelancer@gmail.com', 'Society Of Computer Applications');
+        $mail->addAddress($to);     //Add a recipient
+       // $mail->addReplyTo('info@gmail.com', 'Information');
+        //$mail->addCC('cc@gmail.com');
+       // $mail->addBCC('bcc@gmail.com');
+    
+        //Content
+        $mail->isHTML(true);                                  //Set email format to HTML
+        $mail->Subject = $subject;
+        $mail->Body    = $content;
+    
+    
+        $mail->send();
+       // echo 'Message has been sent';
+       return true;
+    } catch (Exception $e) {
+        //echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        return false;
+    }
+    }
 ?>
