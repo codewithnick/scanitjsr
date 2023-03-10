@@ -271,12 +271,12 @@ button:focus {
   color: #fff;
 }
 
-.facebook a {
+.github a {
   color: #4867AA;
 }
 
-.facebook a:hover {
-  background: #4867AA;
+.github a :hover {
+  background: black;
 }
 
 .twitter a {
@@ -424,7 +424,7 @@ button:focus {
    3. Hero Area
    ===========================url=============================================== */
 #hero-area {
-  background: url(../img/team-2k22.png) fixed no-repeat;
+  background: url(../img/academic.jpg) fixed no-repeat;
   background-size: cover;
   color: #fff;
   overflow: hidden;
@@ -1104,8 +1104,8 @@ button:focus {
   transition: 0.5s;
 }
 
-.single-team .social-list .facebook a:hover {
-  background: #4867aa;
+.single-team .social-list .github a:hover {
+  background: black;
   color: #fff;
 }
 
