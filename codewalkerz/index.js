@@ -7,7 +7,7 @@ const yPass = document.getElementById("yPassing");
 const course = document.getElementById("course");
 
 form.addEventListener("submit", (e) => {
-  e.preventDefault();
+//   e.preventDefault();
 
   checkInputs();
 });

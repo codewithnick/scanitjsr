@@ -38,7 +38,7 @@ if($result){
 <style>
 #card {
     position: relative;
-    width: 320px;
+    width: 500px;
     display: block;
     margin: 40px auto;
     text-align: center;
@@ -55,7 +55,7 @@ if($result){
   #checkmark {
     font-weight: lighter;
     fill: #fff;
-    margin: -3.5em auto auto 20px;
+    margin: -3.5em auto auto 80px;
   }
   
   #status {
@@ -129,8 +129,10 @@ if($result){
   <img src="./images/logo.png" height="150px" width="150px"></img>
   </p>
     <p id='message'>
-      Congratulations, you have sucessfully registered
-    </p>
+                Congratulations, you have sucessfully registered.<br><br>
+               <b> Click this link to join the whatsapp for further updates!!</b><br><br>
+                <a href="https://chat.whatsapp.com/FnZoqa0qu1H1dknPIN1j7H">https://chat.whatsapp.com/FnZoqa0qu1H1dknPIN1j7H</a>
+              </p>
     <a href="./codewalkerz.html" id="contBtn">Continue</a>
   </div>
 </div>
@@ -140,7 +142,7 @@ if($result){
 <style>
 #card {
     position: relative;
-    width: 320px;
+    width: 500px;
     display: block;
     margin: 40px auto;
     text-align: center;
@@ -157,7 +159,7 @@ if($result){
   #checkmark {
     font-weight: lighter;
     fill: #fff;
-    margin: -3.5em auto auto 20px;
+    margin: -3.5em auto auto 80px;
   }
   
   #status {
