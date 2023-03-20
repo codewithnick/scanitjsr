@@ -1,20 +1,38 @@
 <?php
-if( isset($_POST['name']) )
+//ini_set("display_errors","1");
+if( isset($_POST['fname']) )
 $name=$_POST["fname"];
 else
-$name="";
+$name=" ";
 if( isset($_POST['email']) )
 $email=$_POST["email"];
+else
+$email=" ";
 if( isset($_POST['yPassing']) )
 $year=$_POST["yPassing"];
+else
+$year=" ";
 if( isset($_POST['course']) )
 $course=$_POST["course"];
-if( isset($_POST['college']) )
-$college=$_POST["college"];
+else
+$course=" ";
+if( isset($_POST['phone']) )
+$phone=$_POST["phone"];
+else
+$phone=" ";
 include("connector.php");
 $result=FALSE;
-$sql="INSERT INTO `codewalkerz` (`id`,`name`,`email`,`year_of_passing`,`course`,`college`) VALUES (NULL,'$name','$email','$year','$course','$college')";
+$sql="select * from `codewalkerz` where `email`='$email' or `phone`='$phone'";
 $result=mysqli_query($conn,$sql);
+if(mysqli_num_rows($result)==0){
+$sql="INSERT INTO `codewalkerz` (`id`,`name`,`email`,`year_of_passing`,`course`,`phone`) VALUES (NULL,'$name','$email','$year','$course','$phone')";
+$result=mysqli_query($conn,$sql);
+}
+
+else{
+    $result=FALSE;
+}
+
 if($result){
 ?>
 <style>
@@ -107,6 +125,9 @@ if($result){
     </h3>
   </div>
   <div id='lower-side'>
+  <p id='message'>
+  <img src="./images/logo.png" height="150px" width="150px"></img>
+  </p>
     <p id='message'>
       Congratulations, you have sucessfully registered
     </p>
@@ -197,6 +218,10 @@ if($result){
     </h3>
   </div>
   <div id='lower-side'>
+    
+  <p id='message'>
+  <img src="./images/logo.png" height="150px" width="150px"></img>
+</p>
   <p id='message'>
       oops! kindly verify your details 
     </p>
@@ -225,7 +250,7 @@ $bodynew.="\nName: ".$name;
 $bodynew.="\Email: ".$email;
 $bodynew.="\nYear of Passing: ".$year;
 $bodynew.="\nCourse: ".$course;
-$bodynew.="\nCollege: ".$college;
+$bodynew.="\nphone: ".$phone;
 sendamail("society.developers.2023@gmail.com","new registration",$bodynew);
  */
 /* if($result)
