@@ -1,3 +1,9 @@
+<?php
+
+session_start();
+
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -19,6 +25,7 @@
   <!-- For scrolling Animation -->
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <title>CodeWalkerz-SCA</title>
 
   <link rel="stylesheet" href="style.css">
@@ -101,7 +108,7 @@
             data-aos-anchor-placement="top-center">
             <img src="./images/logo.png" alt="NIT Logo" style="height: 200px ;margin-top: 25px;">
           </div>
-          <p class="text-center  text-light">Presented By: <br> Society Of Computer Application <br>NIT JAMSHEDPUR</p>
+          <p class="text-center  text-light">Presented By: <br> <span style="font-size:25px;">Society Of Computer Application </span><br>NIT JAMSHEDPUR</p>
           <p class="text-success display-4 text-light fw-bold "
             style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
             ALL INDIA MEGA CODING EVENT</p>
@@ -218,7 +225,7 @@
                   </div>
                   <br>
                   <div>
-                    <p style="font-size: 15px;"> It can be a sword of Deadpool or the call of the 
+                    <p style="font-size: 16px;"> It can be a sword of Deadpool or the call of the 
                       Professor, it can be a shield of Captain or the crime master gogo keeping an eye on you, a 
                       chemical formula from Heisenberg or John Wick being on his next hunt, a 500 rupee note 
                       from The Artist, or your name being next in the Death Note. 
@@ -250,7 +257,7 @@
                   </div>
                   <br>
                   <div>
-                    <p> Okay!!! Now that you have successfully made up to this 
+                    <p style="font-size: 16px;"> Okay!!! Now that you have successfully made up to this 
                       round, Evaluate the riddles in the best newest forms. Think! Solve! & Dig! into the next cave 
                       each time, till you encounter the squirrel. 
                       Rules this time are little different you got to surf the internet filter the content and find the 
@@ -281,7 +288,7 @@
                   </div>
                   <br>
                   <div>
-                    <p> Aah!! Glad that you made up to this round we must 
+                    <p style="font-size: 16px;"> Aah!! Glad that you made up to this round we must 
                       say you are a tough nut to crack!! NOW, Hunt precisely like a good hunter until you shoot 
                       each bird, before the sand goes down! Either borrow it, beg for it or steal from the hunter 
                       right beside you. Let’s see how far can you go this round it will test your IQ, behaviour and 
@@ -355,7 +362,7 @@
                   <img src="images/codingninja.png" alt="" width="150px">&nbsp; <img src="images/codestudio.png" alt="" width="150px">
                 </div>
                 <div class="text-center mt-5">
-                  <a href="" class="btn btn-warning">Registration Link</a>
+                  <a href="http://bit.ly/42mMTgR" class="btn btn-warning">Registration Link</a>
 
                 </div>
               </div>
@@ -428,8 +435,8 @@
             <h2 class="text-center text-dark">Coding Ninja's Bag</h2>
             <div class="text-center">
               <img src="images/bag.jpg" alt="" width="170px">
-              <p>“ 25% markdown will be there on the desired Coding
-                Ninja courses for every participant. ”</p>
+              <p> <b> “ 25% markdown will be there on the desired Coding
+                Ninja courses for every participant. ” </b></p>
             </div>
             <p class="text-center mt-4" style="font-size: 20px; font-weight: bold; color: #11999e;">
               *Top 3 Winners from 1st year and 7 winners from 2nd year of MCA, NITJSR will be rewarded with an
@@ -468,20 +475,22 @@
                 </h3>
 
                 <form class="px-md-2" id="reg-form" method="post" action="register.php">
-                  <div class="form-outline ">
+                  <div class="form-outline">
                     <label class="form-label font-weight-bold" for="fname">Name :</label>
-                    <input type="text" id="fname" name="fname" class="form-control"
-                      placeholder="Enter your name here..." />
+                    <input type="text"
+                           id="fname"
+                           name="name"
+                           class="form-control"
+                           placeholder="Enter your name here..."
+                           required
 
-                    <!-- for error msg -->
-                    <i class="fas fa-check-circle"></i>
-                    <i class="fas fa-times-circle"></i>
-                    <small>Error message</small>
+                    />
                   </div>
+
                   <div class="form-outline ">
                     <label class="form-label font-weight-bold" for="email">Email :</label>
-                    <input type="mail" id="email" name="email" class="form-control"
-                      placeholder="Enter your Email..." />
+                    <input type="email" id="email" name="email" class="form-control"
+                      placeholder="Enter your Email..." required />
 
                     <!-- for error msg -->
                     <i class="fas fa-check-circle"></i>
@@ -489,9 +498,9 @@
                     <small>Error message</small>
                   </div>
                   <div class="form-outline ">
-                    <label class="form-label font-weight-bold" for="phone">Phone Number :</label>
-                    <input type="number" id="phone" name="phone" class="form-control"
-                      placeholder="Enter your Phone Number..." />
+                    <label class="form-label font-weight-bold" for="phone">Whatsapp Number :</label>
+                    <input type="number" maxlength="10" id="phone" name="phone" class="form-control"
+                      placeholder="Enter your Phone Number..." required/>
 
                     <!-- for error msg -->
                     <i class="fas fa-check-circle"></i>
@@ -503,8 +512,8 @@
                     <div class="col-md-6 ">
                       <div class="form-outline datepicker">
                         <label for="yPassing" class="form-label font-weight-bold">Year of Passing :</label>
-                        <input type="number" name="yPassing" class="form-control" id="yPassing" min="2020"
-                          max="2028" step="1" value="2023" />
+                        <input type="number" name="year_of_passing" class="form-control" id="yPassing" min="2020"
+                          max="2028" step="1" value="2023" required/>
 
                         <!-- for error msg -->
                         <i class="fas fa-check-circle"></i>
@@ -520,7 +529,7 @@
                     <div class="col-md-6 ">
                       <div class="form-outline">
                         <label for="course" class="form-label font-weight-bold">Select your course :</label>
-                        <select class="select form-control-lg" name="course" id="course" style="width: 100%">
+                        <select class="select form-control-lg" name="course" id="course" style="width: 100%" required>
                           <option value="" selected disabled>Course</option>
                           <option value="btech">BTech</option>
                           <option value="mtech">MTech</option>
@@ -542,8 +551,9 @@
                       <select class="select form-control-lg" id="college" name="college" style="width: 100%"></select>
                     </div>
                   </div> -->
+                 
 
-                  <button type="submit" class="btn btn-primary btn-lg mb-1" id="form-submit">
+                  <button type="submit" class="btn btn-primary btn-lg mb-1" id="form-submit" value="register" name="submit">
                     Submit
                   </button>
                   <div style="color:red; margin-top:10px;">
@@ -689,12 +699,12 @@
     AOS.init();
   </script>
 
-
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
+<!--  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"-->
+<!--    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"-->
+<!--    crossorigin="anonymous"></script>-->
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
     integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
     crossorigin="anonymous"></script>
@@ -703,6 +713,43 @@
     crossorigin="anonymous"></script>
   <!-- form processor script -->
   <script src="formprocessor.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>
+      toastr.options = {
+          "closeButton": true,
+          "newestOnTop": false,
+          "progressBar": true,
+          "positionClass": "toast-bottom-right",
+          "preventDuplicates": false,
+          "onclick": null,
+          "showDuration": "300",
+          "hideDuration": "1000",
+          "timeOut": "5000",
+          "extendedTimeOut": "1000",
+          "showEasing": "swing",
+          "hideEasing": "linear",
+          "showMethod": "fadeIn",
+          "hideMethod": "fadeOut"
+      }
+
+
+  <?php
+
+
+  if (isset($_SESSION['errors']))
+  {
+      $errors = $_SESSION['errors'];
+            foreach ($errors as $error){
+                ?>
+                     toastr.error('<?php echo $error ?>');
+                <?php
+            }
+      unset($_SESSION['errors']);
+  }
+
+  ?>
+</script>
+
 </body>
 
 </html>
